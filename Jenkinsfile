@@ -16,6 +16,7 @@ pipeline {
                     sh 'which git' // This prints the location of the git executable used by Jenkins
                 }
             }
+	    }
     stage('Checkout') {
             steps {
                 // Check out the repository and specify the branch
