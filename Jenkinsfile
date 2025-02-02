@@ -9,6 +9,13 @@ pipeline {
     }
 
     stages {
+    stage('Git Info') {
+            steps {
+                script {
+                    sh 'git --version' // Check if Jenkins is using the correct Git version
+                    sh 'which git' // This prints the location of the git executable used by Jenkins
+                }
+            }
     stage('Checkout') {
             steps {
                 // Check out the repository and specify the branch
