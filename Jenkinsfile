@@ -20,7 +20,7 @@ pipeline {
                     echo "Pankaj Jain is hot suvrata"
 		    echo 'Running some tasks...'
                     // Simulating a task on Windows
-                    bat 'echo Doing work > output.txt'
+                    sh 'echo Doing work > output.txt'
                 }
             }
         }
