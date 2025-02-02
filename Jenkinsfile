@@ -11,7 +11,8 @@ pipeline {
             steps {
                 script {
                     // Example command (you can replace this with your actual steps)
-                    echo 'Running some tasks...'
+                    echo "Pankaj Jain"
+		    echo 'Running some tasks...'
                     // Simulating a task on Windows
                     bat 'echo Doing work > output.txt'
                 }
