@@ -7,6 +7,12 @@ pipeline {
     }
 
     stages {
+    stage('Checkout') {
+            steps {
+                // Check out the repository and specify the branch
+                git branch: 'main', url: 'https://github.com/pankaj8979/pipeline-demo.git'
+            }
+        }
         stage('Example Stage') {
             steps {
                 script {
