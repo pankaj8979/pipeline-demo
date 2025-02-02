@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+   tools {
+        git 'Git'  // Name should be 'Git' as per your configuration
+    }
     environment {
         // The recipient email address
         RECIPIENT_EMAIL = 'pj19632@gmail.com'
