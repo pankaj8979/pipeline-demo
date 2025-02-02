@@ -33,7 +33,7 @@ pipeline {
                 emailext(
                     subject: "Jenkins Pipeline Success: ${env.JOB_NAME}",
                     body: """
-                        <h2>Pipeline Success Hurray</h2>
+                        <h2>Pipeline Success Hurray!</h2>
                         <p>The pipeline <b>${env.JOB_NAME}</b> has completed successfully.</p>
                         <p><i>Job details:</i></p>
                         <ul>
