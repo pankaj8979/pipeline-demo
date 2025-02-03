@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile in the workspace
-                    sh 'docker build -t ${env.IMAGE_NAME}:${env.DOCKER_TAG} .'
+                    sh "docker build -t ${env.IMAGE_NAME}:${env.DOCKER_TAG} ."
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container, mapping port 8080 from the container to the host
-                    sh 'docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}'
+                    sh "docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}"
                 }
             }
         }
@@ -57,7 +57,7 @@ pipeline {
                 }
             }
         }
-    } // End of 'stages' block
+    }
 
     post {
         success {
@@ -102,6 +102,6 @@ pipeline {
                 )
             }
         }
-    } // End of 'post' block
+    }
 }
 
