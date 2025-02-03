@@ -6,6 +6,9 @@ pipeline {
     environment {
         // The recipient email address
         RECIPIENT_EMAIL = 'pj19632@gmail.com'
+	 IMAGE_NAME = 'my-node-app'  // Define your image name
+        DOCKER_REGISTRY = 'docker.io' // If using a registry
+        DOCKER_TAG = 'latest' // Define the tag you want to use
     }
 
     stages {
@@ -23,6 +26,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/pankaj8979/pipeline-demo.git'
             }
         }
+	stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile in the workspace
+                    sh 'docker build -t ${env.IMAGE_NAME}:${env.DOCKER_TAG} .'
+                }
+            }
+	    stage('Run Docker Container') {
+            steps {
+                script {
+                    // Run the Docker container, mapping port 8080 from the container to the host
+                    sh 'docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}'
+                }
+            }
         stage('Example Stage') {
             steps {
                 script {
