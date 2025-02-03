@@ -32,7 +32,8 @@ pipeline {
                     // Build the Docker image using the Dockerfile in the workspace
                     sh 'docker build -t ${env.IMAGE_NAME}:${env.DOCKER_TAG} .'
                 }
-            }
+            
+	    }}
 	    stage('Run Docker Container') {
             steps {
                 script {
@@ -40,6 +41,7 @@ pipeline {
                     sh 'docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}'
                 }
             }
+	    }
         stage('Example Stage') {
             steps {
                 script {
