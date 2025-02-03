@@ -1,59 +1,63 @@
 pipeline {
     agent any
-   tools {
+    tools {
         git 'Git'  // Name should be 'Git' as per your configuration
     }
     environment {
         // The recipient email address
         RECIPIENT_EMAIL = 'pj19632@gmail.com'
-	 IMAGE_NAME = 'my-node-app'  // Define your image name
+        IMAGE_NAME = 'my-node-app'  // Define your image name
         DOCKER_REGISTRY = 'docker.io' // If using a registry
         DOCKER_TAG = 'latest' // Define the tag you want to use
     }
 
     stages {
-    stage('Git Info') {
+        stage('Git Info') {
             steps {
                 script {
                     sh 'git --version' // Check if Jenkins is using the correct Git version
                     sh 'which git' // This prints the location of the git executable used by Jenkins
                 }
             }
-	    }
-    stage('Checkout') {
+        }
+        
+        stage('Checkout') {
             steps {
                 // Check out the repository and specify the branch
                 git branch: 'main', url: 'https://github.com/pankaj8979/pipeline-demo.git'
             }
         }
-	stage('Build Docker Image') {
+
+        stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile in the workspace
                     sh 'docker build -t ${env.IMAGE_NAME}:${env.DOCKER_TAG} .'
                 }
-            
-	    }}
-	    stage('Run Docker Container') {
+            }
+        }
+
+        stage('Run Docker Container') {
             steps {
                 script {
                     // Run the Docker container, mapping port 8080 from the container to the host
                     sh 'docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}'
                 }
             }
-	    }
+        }
+
         stage('Example Stage') {
             steps {
                 script {
                     // Example command (you can replace this with your actual steps)
                     echo "Pankaj Jain is hot suvrata baby come fast!"
-		    echo 'Running some tasks...'
+                    echo 'Running some tasks...'
                     // Simulating a task on Windows
                     sh 'echo Doing work > output.txt'
                 }
             }
         }
-    }
+    } // End of 'stages' block
 
     post {
         success {
@@ -98,6 +102,6 @@ pipeline {
                 )
             }
         }
-    }
+    } // End of 'post' block
 }
 
