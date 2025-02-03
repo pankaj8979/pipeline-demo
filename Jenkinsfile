@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script {
                     // Example command (you can replace this with your actual steps)
-                    echo "Pankaj Jain is hot suvrata baby come fast na!"
+                    echo "Pankaj Jain is hot suvrata baby come fast naa!"
                     echo 'Running some tasks...'
                     // Simulating a task on Windows
                     sh 'echo Doing work > output.txt'
