@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container, mapping port 8080 from the container to the host
-                    sh "docker run -d -p 8080:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}"
+                    sh "docker run -d -p 8081:8080 ${env.IMAGE_NAME}:${env.DOCKER_TAG}"
                 }
             }
         }
