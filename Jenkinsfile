@@ -25,7 +25,7 @@ pipeline {
         stage('Checkout') {
             steps {
 	    script{
-	        clone("main", "https://github.com/pankaj8979/pipeline-demo.git")
+	        clone("https://github.com/pankaj8979/pipeline-demo.git", "main")
 		}
                 // Check out the repository and specify the branch
             }
