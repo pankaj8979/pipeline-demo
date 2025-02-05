@@ -41,7 +41,7 @@ pipeline {
             steps{
                 script{
                     sh """
-		    trivy image --no-progress --exit-code 1 --severity HIGH,CRITICAL --format json --output /tmp/trivy-report.json
+		    trivy image --no-progress --exit-code 1 --severity HIGH,CRITICAL --format json --output /tmp/trivy-report.json my-node-app:latest
                     """
 	       }
             }
