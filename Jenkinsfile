@@ -37,6 +37,13 @@ pipeline {
                 // Check out the repository and specify the branch
             }
         }
+	stage("Trivy: Filesystem scan"){
+            steps{
+                script{
+                    sh trivy image --no-progress --exit-code 1 --severity HIGH,CRITICAL --format json --output /tmp/trivy-report.json
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
