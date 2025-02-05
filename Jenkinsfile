@@ -13,6 +13,13 @@ pipeline {
     }
 
     stages {
+    stage("Workspace cleanup"){
+            steps{
+                script{
+                    cleanWs()
+                }
+            }
+        }
         stage('Git Info') {
             steps {
                 script {
